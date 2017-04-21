@@ -1,8 +1,6 @@
 package controller
 
 import (
-	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 	"strconv"
@@ -33,12 +31,8 @@ func (n *NotenSatzController) Get(w http.ResponseWriter, r *http.Request, p http
 		log.Printf("error while opening notensatz %d: %v\n", id, err)
 		return
 	}
-
-	nsj, _ := json.Marshal(ns)
-
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	fmt.Fprintf(w, "%s", nsj)
+	JSONRender(ns, w)
+	return
 }
 
 // Add adds a new NotenSatz instance to the database
