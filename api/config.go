@@ -11,6 +11,12 @@ type Config struct {
 	Host        string `json:"host"`
 	Port        int    `json:"port"`
 	TemplateDir string `json:"templatedir"`
+
+	DBHost     string `json:"db_host,omitempty"`
+	DBDatabase string `json:"db_database,omitempty"`
+	DBUser     string `json:"db_user,omitempty"`
+	DBPassword string `json:"db_password,omitempty"`
+	DBDriver   string `json:"db_driver,omitempty"`
 }
 
 // HTTPAddress formats host and port to a combined string
