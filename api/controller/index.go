@@ -3,15 +3,18 @@ package controller
 import (
 	"net/http"
 
+	"github.com/drmarduk/mvd2/shared/db"
 	"github.com/julienschmidt/httprouter"
 )
 
 // IndexController handles all request to /index
-type IndexController struct{}
+type IndexController struct {
+	ctx *db.DBContext
+}
 
 // NewIndexController returns a new controller for /index
-func NewIndexController() *IndexController {
-	return &IndexController{}
+func NewIndexController(ctx *db.DBContext) *IndexController {
+	return &IndexController{ctx}
 }
 
 // IndexHandler handles /index

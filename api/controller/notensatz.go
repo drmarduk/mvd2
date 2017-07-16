@@ -6,15 +6,18 @@ import (
 	"strconv"
 
 	"github.com/drmarduk/mvd2/api/model"
+	"github.com/drmarduk/mvd2/shared/db"
 	"github.com/julienschmidt/httprouter"
 )
 
 // NotenSatzController handles all requests to /notensatz
-type NotenSatzController struct{}
+type NotenSatzController struct {
+	ctx *db.DBContext
+}
 
 // NewNotenSatzController returns a handler for /notensatz
-func NewNotenSatzController() *NotenSatzController {
-	return &NotenSatzController{}
+func NewNotenSatzController(ctx *db.DBContext) *NotenSatzController {
+	return &NotenSatzController{ctx}
 }
 
 // Get returns a single NotenSatz instance based on the id
